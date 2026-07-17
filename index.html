@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argentina Sovereign AI Infrastructure Proposal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0A1628;
+    --deep-blue: #132744;
+    --sky: #75AADB;
+    --gold: #F4C430;
+    --white: #FFFFFF;
+    --light-gray: #E8EDF4;
+    --muted: #8FA3BF;
+    --card-bg: rgba(255,255,255,0.06);
+    --card-border: rgba(117,170,219,0.15);
+    --green: #81C784;
+    --red: #E57373;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #000;
+    color: var(--white);
+  }
+
+  .slide {
+    width: 1280px;
+    height: 720px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    background: var(--navy);
+  }
+
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .slide-h2 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .page-num {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    font-weight: 500;
+  }
+
+  .flag-bar {
+    position: absolute;
+    height: 6px;
+    left: 0; right: 0;
+    background: linear-gradient(90deg, var(--sky) 0%, var(--sky) 33%, var(--gold) 33%, var(--gold) 66%, var(--sky) 66%);
+  }
+
+  .insight-box {
+    background: rgba(244,196,48,0.08);
+    border-left: 3px solid var(--gold);
+    padding: 14px 24px;
+    border-radius: 0 8px 8px 0;
+    font-size: 16px;
+    color: var(--white);
+    line-height: 1.6;
+  }
+
+  /* ============ SLIDE 1: TITLE ============ */
+  .slide-title {
+    background: linear-gradient(135deg, #0A1628 0%, #132744 40%, #1A3A5C 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 100px;
+  }
+
+  .slide-title .flag-bar { top: 0; }
+
+  .slide-title .tag {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .slide-title h1 {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #75AADB 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .slide-title .subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 750px;
+  }
+
+  .slide-title .bottom-line {
+    position: absolute;
+    bottom: 50px;
+    left: 100px;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .corner-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(117,170,219,0.07);
+  }
+
+  /* ============ SLIDE 2: HEMISPHERE ============ */
+  .slide-hemisphere {
+    background: linear-gradient(180deg, #0D1B2E 0%, #0A1628 100%);
+    padding: 40px 80px;
+  }
+
+  .hemisphere-grid {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .country-card {
+    flex: 1;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .country-card.hostile {
+    background: rgba(229,115,115,0.08);
+    border: 1px solid rgba(229,115,115,0.2);
+  }
+
+  .country-card.ally {
+    background: rgba(117,170,219,0.1);
+    border: 1px solid rgba(117,170,219,0.25);
+  }
+
+  .country-card .flag-emoji { font-size: 28px; margin-bottom: 8px; }
+
+  .country-card .c-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .country-card.hostile .c-name { color: var(--red); }
+  .country-card.ally .c-name { color: var(--sky); }
+
+  .country-card .c-status {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ============ SLIDE 3: FOOD SECURITY ============ */
+  .slide-food {
+    background: linear-gradient(135deg, #0A1628 0%, #0A2218 100%);
+    padding: 40px 80px;
+  }
+
+  .food-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+
+  .food-card {
+    flex: 1;
+    border-radius: 10px;
+    padding: 22px;
+    text-align: center;
+  }
+
+  .food-card .f-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .food-card .f-status {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .food-card.lost {
+    background: rgba(229,115,115,0.08);
+    border: 1px solid rgba(229,115,115,0.15);
+  }
+  .food-card.lost .f-name { color: var(--red); }
+  .food-card.lost .f-status { color: #D09090; }
+
+  .food-card.safe {
+    background: rgba(129,199,132,0.08);
+    border: 1px solid rgba(129,199,132,0.15);
+  }
+  .food-card.safe .f-name { color: var(--green); }
+  .food-card.safe .f-status { color: #A0C9A2; }
+
+  .food-card.opportunity {
+    background: rgba(244,196,48,0.1);
+    border: 1px solid rgba(244,196,48,0.25);
+  }
+  .food-card.opportunity .f-name { color: var(--gold); }
+  .food-card.opportunity .f-status { color: #D4C080; }
+
+  .food-assets {
+    display: flex;
+    gap: 16px;
+    margin-top: 6px;
+  }
+
+  .food-asset {
+    flex: 1;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .food-asset .fa-icon { font-size: 24px; flex-shrink: 0; }
+
+  .food-asset .fa-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .food-asset .fa-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.3;
+    margin-top: 2px;
+  }
+
+  /* ============ SLIDE 4: OPPORTUNITY ============ */
+  .slide-opportunity {
+    background: linear-gradient(180deg, #0D1B2E 0%, #0A1628 100%);
+    padding: 40px 80px;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    flex: 1;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .stat-card .number {
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--sky);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-card .label {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ============ SLIDE 5: WHY NOW ============ */
+  .slide-why-now {
+    background: linear-gradient(135deg, #0A1628 0%, #1A0A28 100%);
+    padding: 40px 80px;
+  }
+
+  .two-col { display: flex; gap: 40px; }
+  .col { flex: 1; }
+
+  .comparison-header {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+  }
+
+  .comparison-header.negative { color: var(--red); border-bottom: 2px solid var(--red); }
+  .comparison-header.positive { color: var(--green); border-bottom: 2px solid var(--green); }
+
+  .comparison-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #C5D0DE;
+  }
+
+  .comparison-item .icon { font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+  .divider-line { width: 1px; background: rgba(255,255,255,0.08); }
+
+  /* ============ SLIDE 6: THE DEAL ============ */
+  .slide-deal {
+    background: linear-gradient(180deg, #0A1628 0%, #0D1E35 100%);
+    padding: 40px 80px;
+  }
+
+  .deal-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .deal-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+    width: 200px;
+  }
+
+  .deal-box .deal-icon { font-size: 32px; margin-bottom: 8px; }
+
+  .deal-box .deal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 5px;
+  }
+
+  .deal-box .deal-desc { font-size: 13px; color: var(--muted); line-height: 1.4; }
+
+  .deal-arrow { font-size: 24px; color: var(--gold); }
+
+  .deal-bottom-row { display: flex; gap: 24px; }
+
+  .deal-bottom-card {
+    flex: 1;
+    background: rgba(117,170,219,0.08);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+
+  .deal-bottom-card h4 { font-size: 15px; font-weight: 700; color: var(--sky); margin-bottom: 6px; }
+  .deal-bottom-card p { font-size: 14px; color: #B0C4DE; line-height: 1.5; }
+
+  /* ============ SLIDE 7: NUMBERS ============ */
+  .slide-numbers {
+    background: linear-gradient(180deg, #0A1628 0%, #0D1B2E 100%);
+    padding: 40px 80px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  thead th {
+    background: rgba(117,170,219,0.15);
+    color: var(--sky);
+    font-weight: 700;
+    text-align: left;
+    padding: 12px 18px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  tbody td {
+    padding: 11px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #C5D0DE;
+    font-size: 15px;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+    font-weight: 700;
+    color: var(--gold);
+    background: rgba(244,196,48,0.06);
+  }
+
+  .savings-callout {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    background: rgba(244,196,48,0.08);
+    border-radius: 10px;
+    padding: 22px 28px;
+  }
+
+  .savings-callout .big-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .savings-callout .savings-text { font-size: 16px; color: #C5D0DE; line-height: 1.6; }
+
+  /* ============ SLIDE 8: WHAT ARGENTINA GETS ============ */
+  .slide-gets {
+    background: linear-gradient(180deg, #0A1628 0%, #0D1E35 100%);
+    padding: 40px 80px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .benefit-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 22px;
+  }
+
+  .benefit-card .b-icon { font-size: 24px; margin-bottom: 10px; }
+  .benefit-card h4 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .benefit-card p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  /* ============ SLIDE 9: WHAT US + TECH GET ============ */
+  .slide-us-tech {
+    background: linear-gradient(180deg, #0D1E35 0%, #0A1628 100%);
+    padding: 40px 80px;
+  }
+
+  .triple-col { display: flex; gap: 20px; }
+
+  .returns-card {
+    flex: 1;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .returns-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .returns-card.us::before { background: #B71C1C; }
+  .returns-card.tech::before { background: var(--sky); }
+
+  .returns-card .rc-header {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .returns-card.us .rc-header { color: #EF9A9A; }
+  .returns-card.tech .rc-header { color: var(--sky); }
+
+  .returns-card .rc-point {
+    font-size: 14px;
+    color: #B0C4DE;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .returns-card .rc-point::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+  }
+
+  /* ============ SLIDE 10: STABILITY ============ */
+  .slide-stability {
+    background: linear-gradient(180deg, #0A1628 0%, #0D1B2E 100%);
+    padding: 40px 80px;
+  }
+
+  .stability-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .stab-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 22px;
+  }
+
+  .stab-card h4 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .stab-card p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  /* ============ SLIDE 11: TOTAL ============ */
+  .slide-total {
+    background: linear-gradient(180deg, #0A1628 0%, #0D1E35 100%);
+    padding: 40px 80px;
+  }
+
+  .total-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .total-card {
+    flex: 1;
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+  }
+
+  .total-card.roads { background: rgba(117,170,219,0.1); border: 1px solid rgba(117,170,219,0.2); }
+  .total-card.data { background: rgba(244,196,48,0.08); border: 1px solid rgba(244,196,48,0.2); }
+  .total-card.combined { background: rgba(129,199,132,0.1); border: 1px solid rgba(129,199,132,0.2); }
+
+  .total-card .t-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .total-card.roads .t-label { color: var(--sky); }
+  .total-card.data .t-label { color: var(--gold); }
+  .total-card.combined .t-label { color: var(--green); }
+
+  .total-card .t-number { font-size: 40px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+
+  .total-card.roads .t-number { color: var(--sky); }
+  .total-card.data .t-number { color: var(--gold); }
+  .total-card.combined .t-number { color: var(--green); }
+
+  .total-card .t-desc { font-size: 14px; color: var(--muted); line-height: 1.4; }
+
+  .total-bottom {
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    padding: 22px 28px;
+    text-align: center;
+  }
+
+  .total-bottom .tb-line { font-size: 16px; color: #C5D0DE; margin-bottom: 6px; line-height: 1.5; }
+  .total-bottom .tb-highlight { font-size: 19px; font-weight: 700; color: var(--gold); margin-top: 10px; }
+
+  /* ============ SLIDE 12: CLOSE ============ */
+  .slide-close {
+    background: linear-gradient(135deg, #0A1628 0%, #132744 40%, #1A3A5C 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 100px;
+    position: relative;
+  }
+
+  .slide-close .flag-bar { bottom: 0; }
+
+  .slide-close .close-quote {
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1.35;
+    color: var(--white);
+    margin-bottom: 30px;
+  }
+
+  .slide-close .close-quote em {
+    color: var(--gold);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .slide-close .close-sub {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 650px;
+  }
+
+  @media print {
+    .slide { page-break-after: always; page-break-inside: avoid; }
+    body { background: #000; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== SLIDE 1: TITLE ==================== -->
+<div class="slide slide-title">
+  <div class="flag-bar" style="top:0"></div>
+  <div class="corner-circle" style="right:-60px; top:-60px; width:500px; height:500px;"></div>
+  <div class="corner-circle" style="right:-20px; top:-20px; width:400px; height:400px;"></div>
+  <div class="tag">US-Argentine Strategic Partnership</div>
+  <h1>Build the Roads.<br>Own the Compute.<br>Lead the Hemisphere.</h1>
+  <div class="subtitle">A zero-treasury-cost deal to transform Argentina into a first-world US ally — by placing 3 of Big Tech's 50+ planned data centers where they strengthen both countries.</div>
+  <div class="bottom-line">CONFIDENTIAL — FOR STRATEGIC DISCUSSION</div>
+</div>
+
+<!-- ==================== SLIDE 2: HEMISPHERE IN CRISIS ==================== -->
+<div class="slide slide-hemisphere">
+  <div class="section-label">The Strategic Context</div>
+  <div class="slide-h2">The US is losing South America. One country is the exception.</div>
+  <div class="hemisphere-grid">
+    <div class="country-card hostile">
+      <div class="flag-emoji">🇧🇷</div>
+      <div class="c-name">Brazil</div>
+      <div class="c-status">BRICS member<br>China/Russia aligned<br>Lula hostile to US</div>
+    </div>
+    <div class="country-card hostile">
+      <div class="flag-emoji">🇨🇱</div>
+      <div class="c-name">Chile</div>
+      <div class="c-status">Leftward drift<br>under Boric<br>Unreliable long-term</div>
+    </div>
+    <div class="country-card hostile">
+      <div class="flag-emoji">🇨🇴</div>
+      <div class="c-name">Colombia</div>
+      <div class="c-status">Petro openly<br>antagonistic<br>to US policy</div>
+    </div>
+    <div class="country-card hostile">
+      <div class="flag-emoji">🇻🇪</div>
+      <div class="c-name">Venezuela</div>
+      <div class="c-status">Post-Maduro<br>reconstruction<br>Needs stable anchor</div>
+    </div>
+    <div class="country-card ally" style="flex: 1.3;">
+      <div class="flag-emoji">🇦🇷</div>
+      <div class="c-name">Argentina</div>
+      <div class="c-status">Most pro-US govt in S. America<br>Milei-Trump aligned<br>Rearming with US equipment<br>RIGI: 30-yr investment stability</div>
+    </div>
+  </div>
+  <div class="insight-box">A stronger Argentina is not a cost to US interests — it is one of the most strategically valuable outcomes available on the continent. Every year Argentina remains undeveloped is a year China and BRICS can make a competing offer.</div>
+  <div class="page-num">02</div>
+</div>
+
+<!-- ==================== SLIDE 3: FOOD SECURITY ==================== -->
+<div class="slide slide-food">
+  <div class="section-label">The Food Security Argument</div>
+  <div class="slide-h2">The Western world's food supply depends on a shrinking list of allies.</div>
+  <div class="food-row">
+    <div class="food-card safe">
+      <div class="f-name">🇺🇸 United States</div>
+      <div class="f-status">Stable. Domestic.</div>
+    </div>
+    <div class="food-card safe">
+      <div class="f-name">🇨🇦 Canada</div>
+      <div class="f-status">Stable. Allied.</div>
+    </div>
+    <div class="food-card safe">
+      <div class="f-name">🇦🇺 Australia</div>
+      <div class="f-status">Stable. Allied.</div>
+    </div>
+    <div class="food-card lost">
+      <div class="f-name">🇧🇷 Brazil</div>
+      <div class="f-status">BRICS. Aligned with China & Russia.</div>
+    </div>
+    <div class="food-card lost">
+      <div class="f-name">🇺🇦 Ukraine</div>
+      <div class="f-status">Active warzone. Output disrupted.</div>
+    </div>
+    <div class="food-card opportunity">
+      <div class="f-name">🇦🇷 Argentina</div>
+      <div class="f-status">Only major food exporter that is both stable AND US-aligned.</div>
+    </div>
+  </div>
+  <div class="food-assets">
+    <div class="food-asset">
+      <div class="fa-icon">🌾</div>
+      <div>
+        <div class="fa-label">The Pampa</div>
+        <div class="fa-desc">World's most productive agricultural land — grain, beef, oilseeds</div>
+      </div>
+    </div>
+    <div class="food-asset">
+      <div class="fa-icon">🔋</div>
+      <div>
+        <div class="fa-label">Lithium Triangle</div>
+        <div class="fa-desc">Critical minerals for batteries, EVs, defense tech</div>
+      </div>
+    </div>
+    <div class="food-asset">
+      <div class="fa-icon">⛽</div>
+      <div>
+        <div class="fa-label">Vaca Muerta</div>
+        <div class="fa-desc">One of earth's largest shale gas & oil reserves</div>
+      </div>
+    </div>
+    <div class="food-asset">
+      <div class="fa-icon">🌊</div>
+      <div>
+        <div class="fa-label">Atlantic Coast</div>
+        <div class="fa-desc">Naval & trade positioning for hemisphere strategy</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">03</div>
+</div>
+
+<!-- ==================== SLIDE 4: THE OPPORTUNITY ==================== -->
+<div class="slide slide-opportunity">
+  <div class="section-label">The Opportunity</div>
+  <div class="slide-h2">Big Tech needs new sites. Argentina needs infrastructure.<br>3 of 50+ data centers. Not zero-sum. Additive.</div>
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="number">$320B</div>
+      <div class="label">Big Tech AI infra<br>spend in 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">50+</div>
+      <div class="label">Data center campuses<br>planned globally</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">3</div>
+      <div class="label">Facilities proposed<br>for Argentina</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">$25B</div>
+      <div class="label">Cost of 3 sites<br>in the US</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">$19-21B</div>
+      <div class="label">Same 3 sites<br>in Argentina</div>
+    </div>
+  </div>
+  <div class="insight-box">The US is receiving hundreds of billions in AI infrastructure investment regardless. This concerns ~3-5% of the pipeline — placed where it strengthens America's most important potential ally in the Southern Hemisphere.</div>
+  <div class="page-num">04</div>
+</div>
+
+<!-- ==================== SLIDE 5: WHY NOW ==================== -->
+<div class="slide slide-why-now">
+  <div class="section-label">Why Now</div>
+  <div class="slide-h2">Argentina under Milei is a fundamentally different country.</div>
+  <div class="two-col">
+    <div class="col">
+      <div class="comparison-header negative">The Old Argentina</div>
+      <div class="comparison-item"><span class="icon">✕</span><span>Chronic instability and expropriation risk</span></div>
+      <div class="comparison-item"><span class="icon">✕</span><span>Currency controls and capital flight restrictions</span></div>
+      <div class="comparison-item"><span class="icon">✕</span><span>Hostile regulatory environment for foreign capital</span></div>
+      <div class="comparison-item"><span class="icon">✕</span><span>Zero supersonic military capability since 2017</span></div>
+      <div class="comparison-item"><span class="icon">✕</span><span>Chinese and Russian diplomatic alignment</span></div>
+      <div class="comparison-item"><span class="icon">✕</span><span>Vanity public works funded by debt</span></div>
+    </div>
+    <div class="divider-line"></div>
+    <div class="col">
+      <div class="comparison-header positive">Milei's Argentina</div>
+      <div class="comparison-item"><span class="icon">✓</span><span>RIGI: 30-year tax stability, free profit repatriation, intl. arbitration</span></div>
+      <div class="comparison-item"><span class="icon">✓</span><span>Dollarization trajectory and IMF alignment</span></div>
+      <div class="comparison-item"><span class="icon">✓</span><span>9,340+ km of road concessions under private tender</span></div>
+      <div class="comparison-item"><span class="icon">✓</span><span>F-16 acquisition — largest military purchase in 50 years (US-approved)</span></div>
+      <div class="comparison-item"><span class="icon">✓</span><span>Strongest US relationship in decades — Trump-Milei alignment</span></div>
+      <div class="comparison-item"><span class="icon">✓</span><span>Private capital model — zero public debt infrastructure</span></div>
+    </div>
+  </div>
+  <div class="page-num">05</div>
+</div>
+
+<!-- ==================== SLIDE 6: THE DEAL ==================== -->
+<div class="slide slide-deal">
+  <div class="section-label">The Deal</div>
+  <div class="slide-h2">Spend the same money. Get more back. Strengthen an ally.</div>
+  <div class="deal-flow">
+    <div class="deal-box">
+      <div class="deal-icon">🏗️</div>
+      <div class="deal-title">Tech Companies</div>
+      <div class="deal-desc">Build 3 of 50+ data centers in Argentina</div>
+    </div>
+    <div class="deal-arrow">→</div>
+    <div class="deal-box">
+      <div class="deal-icon">💰</div>
+      <div class="deal-title">$4-6B Saved</div>
+      <div class="deal-desc">Lower labor, materials, land, energy vs. US</div>
+    </div>
+    <div class="deal-arrow">→</div>
+    <div class="deal-box">
+      <div class="deal-icon">🛣️</div>
+      <div class="deal-title">Roads Built</div>
+      <div class="deal-desc">Savings fund strategic highway network</div>
+    </div>
+    <div class="deal-arrow">→</div>
+    <div class="deal-box">
+      <div class="deal-icon">🧠</div>
+      <div class="deal-title">Free Compute</div>
+      <div class="deal-desc">Argentina gets sovereign AI access for life of deal</div>
+    </div>
+  </div>
+  <div class="deal-bottom-row">
+    <div class="deal-bottom-card">
+      <h4>To the Tech Companies</h4>
+      <p>"Same $25B, tax-free operations, lower opex for 20+ years, serve 650M Latin Americans. The compute carveout is marginal cost on already-built infra. The roads benefit your logistics. Everyone wins."</p>
+    </div>
+    <div class="deal-bottom-card">
+      <h4>To Argentina</h4>
+      <p>"Roads at zero treasury cost. High-skill jobs. Free sovereign AI. The world's most valuable companies on your soil. Every other investor watching. This is a generation of development in a single deal."</p>
+    </div>
+    <div class="deal-bottom-card">
+      <h4>To the United States</h4>
+      <p>"3 of 50+ facilities placed in your most important South American ally — anchoring it with billions in US corporate infrastructure. Costs Washington nothing. Counters BRICS permanently."</p>
+    </div>
+  </div>
+  <div class="page-num">06</div>
+</div>
+
+<!-- ==================== SLIDE 7: THE NUMBERS ==================== -->
+<div class="slide slide-numbers">
+  <div class="section-label">The Numbers</div>
+  <div class="slide-h2">Building in Argentina saves 20-25%. The delta funds the roads.</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>US Cost</th>
+        <th>Argentina Cost</th>
+        <th>Driver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>IT Hardware (GPUs, servers)</td>
+        <td>~$16B</td>
+        <td>~$16B</td>
+        <td>Global pricing — no discount</td>
+      </tr>
+      <tr>
+        <td>Construction & Building</td>
+        <td>~$5.5B</td>
+        <td>~$2-2.5B</td>
+        <td>Labor 20-30% of US wages, local materials</td>
+      </tr>
+      <tr>
+        <td>Land & Site Prep</td>
+        <td>~$1.2B</td>
+        <td>~$300-400M</td>
+        <td>Fraction of US corridor pricing</td>
+      </tr>
+      <tr>
+        <td>Power Infrastructure</td>
+        <td>~$2.5B</td>
+        <td>~$1.5B</td>
+        <td>Vaca Muerta gas + renewables</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>~$25B</td>
+        <td>~$19-21B</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="savings-callout">
+    <div class="big-num">$4-6B</div>
+    <div class="savings-text"><strong>Capex savings redirected to road construction.</strong> Plus ongoing opex savings — energy, labor, maintenance — over 10-15 years could equal or exceed initial savings. Argentina wins on day one and every year after.</div>
+  </div>
+  <div class="page-num">07</div>
+</div>
+
+<!-- ==================== SLIDE 8: WHAT ARGENTINA GETS ==================== -->
+<div class="slide slide-gets">
+  <div class="section-label">Argentina's Return</div>
+  <div class="slide-h2">A generation of development in a single deal.</div>
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="b-icon">🛣️</div>
+      <h4>Strategic Roads</h4>
+      <p>10,000 km of modern highway connecting every major economic corridor — at zero treasury cost</p>
+    </div>
+    <div class="benefit-card">
+      <div class="b-icon">🧠</div>
+      <h4>Sovereign AI Compute</h4>
+      <p>Free frontier AI for agriculture, healthcare, defense, education, government modernization</p>
+    </div>
+    <div class="benefit-card">
+      <div class="b-icon">💼</div>
+      <h4>High-Skill Jobs</h4>
+      <p>Thousands of permanent positions in data center operations, engineering, and services</p>
+    </div>
+    <div class="benefit-card">
+      <div class="b-icon">🌎</div>
+      <h4>Global Credibility</h4>
+      <p>Google, Apple, OpenAI on Argentine soil — a beacon for every other foreign investor</p>
+    </div>
+    <div class="benefit-card">
+      <div class="b-icon">⚡</div>
+      <h4>Power Grid Investment</h4>
+      <p>Energy infrastructure serves surrounding regions — lifting capacity for industry and agriculture</p>
+    </div>
+    <div class="benefit-card">
+      <div class="b-icon">🎓</div>
+      <h4>Brain Drain Reversal</h4>
+      <p>Argentine engineers worldwide finally have a reason to come home — or never leave</p>
+    </div>
+  </div>
+  <div class="page-num">08</div>
+</div>
+
+<!-- ==================== SLIDE 9: WHAT US + TECH GET ==================== -->
+<div class="slide slide-us-tech">
+  <div class="section-label">Returns for the US &amp; Tech Companies</div>
+  <div class="slide-h2">Every party wins. This is not zero-sum.</div>
+  <div class="triple-col">
+    <div class="returns-card us">
+      <div class="rc-header">United States 🇺🇸</div>
+      <div class="rc-point">Permanently US-aligned anchor in South America via billions in sunk corporate infrastructure</div>
+      <div class="rc-point">Western control over critical food production on a continent trending toward BRICS</div>
+      <div class="rc-point">Stable, prosperous neighbor for post-Maduro Venezuela reconstruction</div>
+      <div class="rc-point">Counterweight to Chinese and Russian influence across the region</div>
+      <div class="rc-point">Costs Washington zero — entirely private capital</div>
+    </div>
+    <div class="returns-card tech">
+      <div class="rc-header">Google</div>
+      <div class="rc-point">~$9B campus, tax-free under RIGI for 30 years</div>
+      <div class="rc-point">Serve 650M Latin Americans with low-latency local infrastructure</div>
+      <div class="rc-point">Vaca Muerta energy = lower power costs for 20+ years</div>
+      <div class="rc-point">Geographic diversification away from strained US grids</div>
+    </div>
+    <div class="returns-card tech">
+      <div class="rc-header">OpenAI</div>
+      <div class="rc-point">~$12B Stargate-class site at lower construction cost</div>
+      <div class="rc-point">Southern Hemisphere inference node for all of LATAM</div>
+      <div class="rc-point">Compute carveout is marginal cost on built infrastructure</div>
+      <div class="rc-point">"We built a country" — PR value worth billions</div>
+    </div>
+  </div>
+  <div style="margin-top: 16px;">
+    <div class="insight-box">Apple gets the same advantages: ~$4B Private Cloud Compute expansion, Apple Intelligence serving the fastest-growing smartphone market in the hemisphere, and 30-year regulatory certainty that no US state can match.</div>
+  </div>
+  <div class="page-num">09</div>
+</div>
+
+<!-- ==================== SLIDE 10: STABILITY ==================== -->
+<div class="slide slide-stability">
+  <div class="section-label">Addressing the Objection</div>
+  <div class="slide-h2">"Argentina is unstable" — a lazy pattern match from a previous era.</div>
+  <div class="stability-grid">
+    <div class="stab-card">
+      <h4>Economic Entanglement > Ideology</h4>
+      <p>Billions in sunk infrastructure = mutual dependency. Nobody rewrites the lease on Ramstein. Nobody rewrites the lease on a $20B data center. This is rule of law by physics, not politics.</p>
+    </div>
+    <div class="stab-card">
+      <h4>RIGI Legal Framework</h4>
+      <p>30-year tax stability, international arbitration, free profit repatriation. More protective than most US state incentive packages. Already law — not a proposal.</p>
+    </div>
+    <div class="stab-card">
+      <h4>Geopolitical Lock-In</h4>
+      <p>Trump-Milei alignment. IMF compliance. NATO-adjacent military posture via US-approved F-16s. Argentina is moving permanently into the Western institutional framework.</p>
+    </div>
+    <div class="stab-card">
+      <h4>Counterpoint: US Risk</h4>
+      <p>Antitrust actions against all major tech companies. State-by-state permitting battles. Energy grid constraints. Political uncertainty on AI regulation. Is Virginia really more predictable than a 30-year RIGI guarantee?</p>
+    </div>
+  </div>
+  <div class="insight-box">India, Vietnam, and the UAE all attracted major tech infrastructure despite "instability" narratives. What mattered was the deal structure and the economic entanglement — not the country's reputation.</div>
+  <div class="page-num">10</div>
+</div>
+
+<!-- ==================== SLIDE 11: TOTAL PICTURE ==================== -->
+<div class="slide slide-total">
+  <div class="section-label">The Complete Picture</div>
+  <div class="slide-h2">A first-world US ally for $60-70B. Zero public cost. One decade.</div>
+  <div class="total-row">
+    <div class="total-card roads">
+      <div class="t-label">Strategic Roads</div>
+      <div class="t-number">$40-50B</div>
+      <div class="t-desc">10,000 km of modern highway<br>connecting every economic corridor</div>
+    </div>
+    <div class="total-card data">
+      <div class="t-label">AI Data Centers</div>
+      <div class="t-number">$19-21B</div>
+      <div class="t-desc">3 world-class facilities<br>funded by private tech capital</div>
+    </div>
+    <div class="total-card combined">
+      <div class="t-label">Total Investment</div>
+      <div class="t-number">$60-70B</div>
+      <div class="t-desc">National transformation<br>over one decade</div>
+    </div>
+  </div>
+  <div class="total-bottom">
+    <div class="tb-line">Data centers funded by tech companies. Roads funded by the construction cost delta. Argentine treasury: $0. US cost: $0.</div>
+    <div class="tb-line">A stronger Argentina is a stronger US ally. This isn't anti-American — it's American grand strategy.</div>
+    <div class="tb-highlight">The money exists. The framework exists. The political alignment exists.</div>
+  </div>
+  <div class="page-num">11</div>
+</div>
+
+<!-- ==================== SLIDE 12: CLOSE ==================== -->
+<div class="slide slide-close">
+  <div class="corner-circle" style="left:-80px; bottom:-80px; width:400px; height:400px;"></div>
+  <div class="close-quote">
+    Not money. Not talent. Not geography.<br>Not political will. Not US support.<br><br>
+    The only thing missing<br>is <em>the phone call</em>.
+  </div>
+  <div class="close-sub">
+    I'm American. I love my country and I'm not leaving it.<br>
+    But I believe you can love and build in more than one place.<br><br>
+    If this goes anywhere, my only ask is Argentine citizenship by exception —<br>
+    because anyone proposing to help build a country<br>should be willing to belong to it.<br><br>
+    <strong>Still American. Expanding.</strong><br><br>
+    <a href="BuildArgentina_Full_Proposal.pdf" download style="color: var(--sky); font-size: 14px; text-decoration: none; letter-spacing: 1px;">📄 Download the Full Proposal</a>
+  </div>
+  <div class="flag-bar" style="bottom:0"></div>
+</div>
+
+</body>
+</html>
